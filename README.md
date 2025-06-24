@@ -1,71 +1,83 @@
-# RAG Chatbot with Mistral AI
+Third Wave Coffee Research Chatbot (RAG + Mistral AI)
+A Retrieval-Augmented Generation (RAG) chatbot built with Flask and Mistral AI, designed to help users explore concepts, studies, and terminology from the world of third wave coffee.
 
-A Retrieval-Augmented Generation (RAG) chatbot built with Flask and Mistral AI.
+Powered by World Coffee Research, scientific literature, and other specialty coffee resources.
 
-**Created by [Halim Madi](https://www.halimmadi.com)**
+This educational chatbot helps coffee professionals, enthusiasts, and researchers access knowledge about coffee genetics, processing methods, sensory science, and sustainability innovations.
 
-This is a sample project designed for students, workshops, and educational purposes. Feel free to use, modify, and distribute this code as you wish for learning and development.
+About the Creator
+Website: www.halimmadi.com
 
-## About the Creator
+Instagram: @yalla_halim
 
-- **Website**: [www.halimmadi.com](https://www.halimmadi.com)
-- **Instagram**: [@yalla_halim](https://www.instagram.com/yalla_halim/)
+Setup
+Clone the repository
 
-## Setup
+Create a virtual environment:
 
-1. Clone the repository
-2. Create a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Create a `.env` file with your Mistral API key:
-   ```
-   MISTRAL_API_KEY=your_api_key_here
-   ```
-5. Add your text file as `essay.txt` in the project root
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+Install dependencies:
 
-## Local Development
+bash
+Copy
+Edit
+pip install -r requirements.txt
+Create a .env file with your Mistral API key:
 
+ini
+Copy
+Edit
+MISTRAL_API_KEY=your_api_key_here
+Add your coffee-related content source as essay.txt in the project root. You can include text from World Coffee Research or other trusted sources.
+
+Local Development
 Run the Flask application:
-```bash
+
+bash
+Copy
+Edit
 python app.py
-```
+Then navigate to http://localhost:5001 in your browser.
 
-The application will be available at `http://localhost:5001`
+Deployment to Vercel
+Push your code to GitHub
 
-## Deployment to Vercel
+Connect your GitHub repository to Vercel
 
-1. Push your code to GitHub
-2. Connect your GitHub repository to Vercel
-3. Add your environment variables in the Vercel dashboard:
-   - `MISTRAL_API_KEY`: Your Mistral API key
-4. Deploy!
+Add the environment variable MISTRAL_API_KEY in the Vercel dashboard
 
-## Environment Variables
+Deploy!
 
-- `MISTRAL_API_KEY`: Your Mistral AI API key (required)
+Environment Variables
+MISTRAL_API_KEY: Your Mistral AI API key (required)
 
-## Project Structure
+Project Structure
+app.py: Main Flask application logic
 
-- `app.py`: Main Flask application
-- `templates/`: HTML templates
-- `static/`: Static files (CSS, JS)
-- `essay.txt`: Source text for the RAG system
-- `requirements.txt`: Python dependencies
-- `vercel.json`: Vercel deployment configuration
+templates/: HTML templates for the UI
 
-## Usage and Licensing
+static/: CSS and JavaScript files
 
-This project is provided as a learning resource for students and workshop participants. You are free to:
+essay.txt: The corpus of coffee research material for the chatbot
 
-- Use this code for educational purposes
-- Modify and adapt it for your own projects
-- Share it with others for learning
-- Use it in workshops and tutorials
+requirements.txt: Python dependencies
 
-Feel free to reach out to [Halim Madi](https://www.halimmadi.com) with any questions or feedback! 
+vercel.json: Vercel deployment configuration
+
+Usage and Licensing
+This project is provided as a learning and exploration tool for coffee educators, baristas, researchers, and anyone interested in deepening their understanding of specialty coffee. You are welcome to:
+
+Use this project for education and research
+
+Customize it with your own coffee resources
+
+Share it with others in the coffee community
+
+Use it in workshops, meetups, or educational settings
+
+For questions or contributions, reach out to Halim Madi.
+
