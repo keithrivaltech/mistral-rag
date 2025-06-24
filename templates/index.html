@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAMPLE RAG CHATBOT</title>
+    <title>Demystifying third-wave coffee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <h1>SAMPLE RAG CHATBOT</h1>
+            <div class="header-content">
+                <h1>Demystifying third-wave coffee</h1>
+                <p class="header-subtitle">Exploring the artistry, science, and culture behind specialty coffee</p>
+            </div>
         </div>
         <div class="chat-messages" id="chat-messages">
             <div class="message bot">
-                Welcome to the RAG Chatbot. I am ready to answer your questions about the text I've been trained on.
+                <div class="message-content">
+                    Welcome to your coffee knowledge companion. I'm here to help you explore the nuanced world of third-wave coffee—from origin stories and processing methods to brewing techniques and flavor profiles. What would you like to discover today?
+                </div>
             </div>
         </div>
         <div class="chat-input">
             <form id="chat-form">
-                <input type="text" id="user-input" placeholder="Enter your question..." required>
-                <button type="submit">Send</button>
+                <input type="text" id="user-input" placeholder="Ask about origins, brewing methods, or coffee culture..." required>
+                <button type="submit">Ask</button>
             </form>
         </div>
     </div>
-
     <script>
         document.getElementById('chat-form').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -34,6 +39,7 @@
             
             // Disable the submit button while processing
             submitButton.disabled = true;
+            submitButton.textContent = 'Thinking...';
             
             // Add user message to chat
             addMessage(question, 'user');
@@ -66,7 +72,7 @@
                 if (data.context && data.context.length > 0) {
                     addMessage('Context used:', 'system');
                     data.context.forEach((chunk, index) => {
-                        addMessage(`Chunk ${index + 1}: ${chunk}`, 'system');
+                        addMessage(`Source ${index + 1}: ${chunk}`, 'system');
                     });
                 }
             } catch (error) {
@@ -75,17 +81,38 @@
             } finally {
                 // Re-enable the submit button
                 submitButton.disabled = false;
+                submitButton.textContent = 'Ask';
             }
         });
-
+        
         function addMessage(text, type) {
             const messagesDiv = document.getElementById('chat-messages');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${type}`;
-            messageDiv.textContent = text;
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = text;
+            
+            messageDiv.appendChild(contentDiv);
             messagesDiv.appendChild(messageDiv);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
+
+        // Auto-resize input
+        const userInput = document.getElementById('user-input');
+        userInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+
+        // Enter to submit, Shift+Enter for new line
+        userInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                document.getElementById('chat-form').dispatchEvent(new Event('submit'));
+            }
+        });
     </script>
 </body>
-</html> 
+</html>
